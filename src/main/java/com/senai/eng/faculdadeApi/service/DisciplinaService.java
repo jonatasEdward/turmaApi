@@ -1,6 +1,5 @@
 package com.senai.eng.faculdadeApi.service;
 
-import com.senai.eng.faculdadeApi.model.Aluno;
 import com.senai.eng.faculdadeApi.model.Disciplina;
 import com.senai.eng.faculdadeApi.repository.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +22,6 @@ public class DisciplinaService {
     }
 
     public Disciplina save(Disciplina aluno) {
-        if (aluno.equals(new Aluno())){
-            throw new Exception("Aluno inexistente")
-        }
         return this.repository.save(aluno);
     }
 

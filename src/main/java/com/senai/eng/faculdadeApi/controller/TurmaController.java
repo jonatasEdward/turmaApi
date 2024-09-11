@@ -1,6 +1,5 @@
 package com.senai.eng.faculdadeApi.controller;
 
-import com.senai.eng.faculdadeApi.model.Professor;
 import com.senai.eng.faculdadeApi.model.Turma;
 import com.senai.eng.faculdadeApi.service.TurmaService;
 import org.springframework.beans.factory.annotation.Autowired;

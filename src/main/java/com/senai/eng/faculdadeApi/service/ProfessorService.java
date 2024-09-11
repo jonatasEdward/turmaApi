@@ -27,10 +27,6 @@ public class ProfessorService {
     }
 
     public Professor update(Professor aluno) {
-
-        if (aluno.equals(new Aluno())){
-            throw new Exception("Aluno inexistente")
-        }
         return this.repository.save(aluno);
     }
 

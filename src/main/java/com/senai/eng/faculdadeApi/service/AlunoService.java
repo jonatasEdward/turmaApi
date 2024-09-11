@@ -23,9 +23,6 @@ public class AlunoService {
 
     public Aluno save(Aluno aluno) {
 
-        if (aluno.equals(new Aluno())){
-            throw new Exception("Aluno inexistente")
-        }
         return this.repository.save(aluno);
     }
 

@@ -1,7 +1,6 @@
 package com.senai.eng.faculdadeApi.controller;
 
 import com.senai.eng.faculdadeApi.model.Aluno;
-import com.senai.eng.faculdadeApi.model.Disciplina;
 import com.senai.eng.faculdadeApi.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

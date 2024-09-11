@@ -20,6 +20,16 @@ public class Professor {
     @JoinColumn
     private Set<Disciplina> disciplinas;
 
+    public Professor() {
+    }
+
+    public Professor(Integer id, String nome, String email, Set<Disciplina> disciplinas) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.disciplinas = disciplinas;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -44,26 +54,34 @@ public class Professor {
         this.email = email;
     }
 
+    public Set<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(Set<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
     @Override
     public String toString() {
         return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
+                ", disciplinas=" + disciplinas +
                 '}';
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Professor professor = (Professor) o;
-        return Objects.equals(id, professor.id) && Objects.equals(nome, professor.nome) && Objects.equals(email, professor.email);
+        return Objects.equals(id, professor.id) && Objects.equals(nome, professor.nome) && Objects.equals(email, professor.email) && Objects.equals(disciplinas, professor.disciplinas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, email);
+        return Objects.hash(id, nome, email, disciplinas);
     }
 }

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
 public class Aluno {
 
     @Id
@@ -15,12 +16,22 @@ public class Aluno {
 
     private String cpf;
 
-    @OneToMany
-    @JoinColumn
+    @ManyToMany
+    @JoinTable(
+            name = "ALUNO_DISCIPLINAS ",  // Tabela intermediária
+            joinColumns = @JoinColumn(name = "ALUNO_ID"),  // Chave estrangeira para Estudante
+            inverseJoinColumns = @JoinColumn(name = "DISCIPLINA_ID")  // Chave estrangeira para Curso
+    )
     private Set<Disciplina> disciplinas;
 
-
     public Aluno() {
+    }
+
+    public Aluno(Integer id, String nome, String cpf, Set<Disciplina> disciplinas) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.disciplinas = disciplinas;
     }
 
     public String getNome() {
@@ -39,12 +50,29 @@ public class Aluno {
         this.cpf = cpf;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Set<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(Set<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
     @Override
     public String toString() {
         return "Aluno{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
+                ", disciplinas=" + disciplinas +
                 '}';
     }
 
@@ -53,11 +81,12 @@ public class Aluno {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Aluno aluno = (Aluno) o;
-        return Objects.equals(id, aluno.id) && Objects.equals(nome, aluno.nome) && Objects.equals(cpf, aluno.cpf);
+        return Objects.equals(id, aluno.id) && Objects.equals(nome, aluno.nome) && Objects.equals(cpf, aluno.cpf) && Objects.equals(disciplinas, aluno.disciplinas);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nome, cpf);
+        return Objects.hash(id, nome, cpf, disciplinas);
     }
+
 }
